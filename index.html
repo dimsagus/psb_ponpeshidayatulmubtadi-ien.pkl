@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Siswa Baru Pondok Pesantren</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1a2a2a, #3b3b3b);
+            color: #f0e68c;
+            transition: margin-left 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2a2a2a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: block;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            background-color: #2a2a2a;
+            transition: left 0.3s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+        }
+
+        .sidebar ul li a {
+            color: #f0e68c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .sidebar.active {
+            left: 0; /* Show sidebar */
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            margin-left: 0; /* Adjust margin for sidebar */
+            transition: margin-left 0.3s;
+        }
+
+        .cta-btn {
+            background-color: #ffcc00;
+            color: #2a2a2a;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #f0e68c;
+        }
+
+        .about, .registration {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .registration form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .registration input, .registration textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #f0e68c;
+            border-radius: 5px;
+        }
+
+        .registration button {
+            background-color: #ffcc00;
+            color: #2a2a2a;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .registration button:hover {
+            background-color: #f0e68c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2a2a2a;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Additional styles for sections */
+        section {
+            padding: 50px 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Styles for testimonials */
+        .testimonials {
+            background-color: #3b3b3b;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .testimonial {
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Styles for FAQ */
+        .faq {
+            margin: 20px 0;
+        }
+
+        .faq-item {
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Pondok Pesantren</div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#pendaftaran">Pendaftaran</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </div>
+
+    <section id="beranda" class="hero">
+        <h1>Pendaftaran Siswa Baru</h1>
+        <p>Selamat datang di Pondok Pesantren kami. Daftarkan diri Anda sekarang!</p>
+        <a href="#pendaftaran" class="cta-btn">Daftar Sekarang</a>
+    </section>
+
+    <section id="tentang" class="about">
+        <h2>Tentang Kami</h2>
+        <p>Pondok Pesantren kami menyediakan pendidikan yang berkualitas dengan pendekatan tradisional dan modern. Kami berkomitmen untuk membentuk generasi yang berakhlak dan berilmu.</p>
+    </section>
+
+    <section id="pendaftaran" class="registration">
+        <h2>Pendaftaran Siswa Baru</h2>
+        <form id="registration-form" action="https://formspree.io/f/xeokgjpg" method="POST">
+            <input type="text" name="name" placeholder="Nama Lengkap" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Nomor Telepon" required>
+            <textarea name="message" placeholder="Pesan" required></textarea>
+            <button type="submit">Kirim Pendaftaran</button>
+        </form>
+    </section>
+
+    <section id="testimoni" class="testimonials">
+        <h2>Testimoni</h2>
+        <div class="testimonial">
+            "Pondok Pesantren ini memberikan pendidikan yang sangat baik dan lingkungan yang mendukung."
+            <div class="testimonial-author">- Ahmad, Alumni</div>
+        </div>
+        <div class="testimonial">
+            "Saya merasa sangat beruntung bisa belajar di sini. Pengajarnya sangat profesional."
+            <div class="testimonial-author">- Siti, Siswa</div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+            <strong>Apa saja syarat pendaftaran?</strong>
+            <div class="faq-answer">Syarat pendaftaran meliputi fotokopi akta kelahiran, fotokopi KTP orang tua, dan pas foto terbaru.</div>
+        </div>
+        <div class="faq-item">
+            <strong>Apakah ada biaya pendaftaran?</strong>
+            <div class="faq-answer">Ya, terdapat biaya pendaftaran yang harus dibayarkan saat mendaftar.</div>
+        </div>
+        <div class="faq-item">
+            <strong>Bagaimana cara menghubungi pihak pondok?</strong>
+            <div class="faq-answer">Anda dapat menghubungi kami melalui email atau nomor telepon yang tertera di footer.</div>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <h3>Hubungi Kami</h3>
+        <p>Email: info@pondokpesantren.com | Telepon: 123-456-7890</p>
+        <p>&copy; 2025 Pondok Pesantren. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const hero = document.querySelector('.hero');
+            sidebar.classList.toggle('active');
+            if (sidebar.classList.contains('active')) {
+                hero.style.marginLeft = '250px'; // Adjust margin for sidebar
+            } else {
+                hero.style.marginLeft = '0'; // Reset margin
+            }
+        });
+
+        // FAQ toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
